@@ -9,6 +9,9 @@ Source0:	http://trash.net/~reeler/bmon/files/%{name}-%{version}.tar.bz2
 # Source0-md5:	b22af0ac4564200c6d249d4585589ce8
 Patch0:		%{name}-ncurses.patch
 URL:		http://trash.net/~reeler/bmon/
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,8 +52,8 @@ Pozwala on na generowanie i rysowanie trzech typów diagramów:
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
+
 install bmon $RPM_BUILD_ROOT%{_bindir}
 install bmon.1 $RPM_BUILD_ROOT%{_mandir}/man1
 

@@ -8,6 +8,9 @@ Group:		Applications/Networking
 Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}.tar.gz
 # Source0-md5:	d0da9d05f18c82a621171985d536dec7
 URL:		http://people.suug.ch/~tgr/bmon/	
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	ncurses-devel
 Conflicts:	nstats
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -52,6 +55,10 @@ bmon.
 %setup -q
 
 %build
+%{__gettextize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
 %configure
 %{__make}
 
@@ -72,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog
 %attr(755,root,root) %{_bindir}/*
-%{_sysconfdir}/%{name}.conf
+%config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_mandir}/man1/*
 
 %files devel

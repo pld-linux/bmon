@@ -37,7 +37,7 @@ Pozwala on na generowanie i rysowanie trzech typów diagramów:
 
 %package devel
 Summary: 	Header files for bmon
-Summary(pl):	Pliko nag³ówkowe dla bmon
+Summary(pl):	Pliki nag³ówkowe dla bmon
 Group:		Development/Libraries
 
 %description devel

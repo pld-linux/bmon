@@ -7,7 +7,7 @@ License:	Artistic
 Group:		Applications/Networking
 Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}.tar.gz
 # Source0-md5:	d0da9d05f18c82a621171985d536dec7
-URL:		http://people.suug.ch/~tgr/bmon/	
+URL:		http://people.suug.ch/~tgr/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -39,7 +39,7 @@ Pozwala on na generowanie i rysowanie trzech typów diagramów:
   b³êdy, skompresowane pakiety...
 
 %package devel
-Summary: 	Header files for bmon
+Summary:	Header files for bmon
 Summary(pl):	Pliki nag³ówkowe dla bmon
 Group:		Development/Libraries
 
@@ -63,10 +63,11 @@ bmon.
 %{__make}
 
 %install
+rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}
 install -d $RPM_BUILD_ROOT%{_includedir}/%{name}
 install etc/%{name}.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
-install include/%{name}/* $RPM_BUILD_ROOT%{_includedir}/%{name}/ 
+install include/%{name}/* $RPM_BUILD_ROOT%{_includedir}/%{name}/
 
 
 %{__make} install \
@@ -79,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog
 %attr(755,root,root) %{_bindir}/*
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
 %{_mandir}/man1/*
 
 %files devel

@@ -1,13 +1,12 @@
 Summary:	Console interface bandwidth usage monitor
 Summary(pl):	Konsolowy monitor u¿ycia interfejsu sieciowego
 Name:		bmon
-Version:	1.2.0
+Version:	1.2.1
 Release:	1
 License:	Artistic
 Group:		Applications/Networking
 Source0:	http://trash.net/~reeler/bmon/files/%{name}-%{version}.tar.bz2
-# Source0-md5:	b22af0ac4564200c6d249d4585589ce8
-Patch0:		%{name}-ncurses.patch
+# Source0-md5:	52c400477996b6f85046981226b2d278
 URL:		http://trash.net/~reeler/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -40,7 +39,6 @@ Pozwala on na generowanie i rysowanie trzech typów diagramów:
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__gettextize}

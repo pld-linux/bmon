@@ -1,12 +1,15 @@
+
+%define		_pre	pre6
+
 Summary:	Console interface bandwidth usage monitor
 Summary(pl):	Konsolowy monitor u¿ycia interfejsu sieciowego
 Name:		bmon
-Version:	2.0.1
-Release:	1
+Version:	2.1.0
+Release:	0.%{_pre}.1
 License:	Artistic
 Group:		Applications/Networking
-Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}.tar.gz
-# Source0-md5:	d0da9d05f18c82a621171985d536dec7
+Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}-%{_pre}.tar.gz
+# Source0-md5:	909fe967ff361a7648586c7c1311aa2a
 URL:		http://people.suug.ch/~tgr/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -52,7 +55,7 @@ bmon.
 
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{_pre}
 
 %build
 %{__gettextize}

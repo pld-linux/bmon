@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog
 %attr(755,root,root) %{_bindir}/*
-%config(noreplace) %{_sysconfdir}/%{name}.conf
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/%{name}.conf
 %{_mandir}/man1/*
 
 %files devel

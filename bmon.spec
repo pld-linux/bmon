@@ -1,16 +1,13 @@
 Summary:	Console interface bandwidth usage monitor
 Summary(pl):	Konsolowy monitor u¿ycia interfejsu sieciowego
 Name:		bmon
-Version:	1.2.1
+Version:	2.0.1
 Release:	1
 License:	Artistic
 Group:		Applications/Networking
-Source0:	http://trash.net/~reeler/bmon/files/%{name}-%{version}.tar.bz2
-# Source0-md5:	52c400477996b6f85046981226b2d278
-URL:		http://trash.net/~reeler/bmon/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gettext-devel
+Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}.tar.gz
+# Source0-md5:	d0da9d05f18c82a621171985d536dec7
+URL:		http://people.suug.ch/~tgr/bmon/	
 BuildRequires:	ncurses-devel
 Conflicts:	nstats
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -38,29 +35,46 @@ Pozwala on na generowanie i rysowanie trzech typów diagramów:
    interfejsu, takie jak ca³kowita liczba bajtów odebranych/wys³anych,
    b³êdy, skompresowane pakiety...
 
+%package devel
+Summary: 	Header files for bmon
+Summary(pl):	Pliko nag³ówkowe dla bmon
+Group:		Development/Libraries
+
+%description devel
+Header files neccesary to develop bmon applications.
+
+%description devel -l pl
+Pliki nag³ówkowe niezbêdne do tworzenia aplikacji korzystaj±cych z
+bmon.
+
+
 %prep
 %setup -q
 
 %build
-%{__gettextize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
 %configure
 %{__make}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}
+install -d $RPM_BUILD_ROOT%{_includedir}/%{name}
+install etc/%{name}.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
+install include/%{name}/* $RPM_BUILD_ROOT%{_includedir}/%{name}/ 
 
-install bmon $RPM_BUILD_ROOT%{_bindir}
-install bmon.1 $RPM_BUILD_ROOT%{_mandir}/man1
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog
+%doc ChangeLog
 %attr(755,root,root) %{_bindir}/*
+%{_sysconfdir}/%{name}.conf
 %{_mandir}/man1/*
+
+%files devel
+%defattr(644,root,root,755)
+%{_includedir}/*

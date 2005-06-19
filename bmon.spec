@@ -9,7 +9,7 @@ Release:	0.%{_pre}.1
 License:	Artistic
 Group:		Applications/Networking
 Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}-%{_pre}.tar.gz
-# Source0-md5:	3111a027907016c0902d67350c619df6
+# Source0-md5:	f4ec66927751027f855886f3dc45c218
 URL:		http://people.suug.ch/~tgr/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake

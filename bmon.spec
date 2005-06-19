@@ -60,6 +60,7 @@ bmon.
 %setup -q -n %{name}-%{version}-%{_pre}
 
 %build
+cp -f /usr/share/automake/config.sub .
 %{__gettextize}
 %{__aclocal}
 %{__autoconf}

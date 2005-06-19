@@ -1,15 +1,15 @@
 
-%define		_pre	pre1
-
+%define	_pre	pre1
+%define	_sysconfdir	/etc/%{name}
 Summary:	Console interface bandwidth usage monitor
 Summary(pl):	Konsolowy monitor u¿ycia interfejsu sieciowego
 Name:		bmon
-Version:	2.1.1
+Version:	2.2.0
 Release:	0.%{_pre}.1
 License:	Artistic
 Group:		Applications/Networking
 Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}-%{_pre}.tar.gz
-# Source0-md5:	e08f5d8a7b0fb6e632484cbfc95ebd33
+# Source0-md5:	3111a027907016c0902d67350c619df6
 URL:		http://people.suug.ch/~tgr/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -17,6 +17,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	libdbi-devel
 BuildRequires:	libnl-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	postgresql-devel
 BuildRequires:	rrdtool-devel
 Conflicts:	nstats
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -56,7 +57,6 @@ Header files neccesary to develop bmon applications.
 Pliki nag³ówkowe niezbêdne do tworzenia aplikacji korzystaj±cych z
 bmon.
 
-
 %prep
 %setup -q -n %{name}-%{version}-%{_pre}
 
@@ -73,9 +73,8 @@ cp -f /usr/share/automake/config.sub .
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}
 install -d $RPM_BUILD_ROOT%{_includedir}/%{name}
-install etc/%{name}.conf $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.conf
+cp -r etc/* $RPM_BUILD_ROOT%{_sysconfdir}
 install include/%{name}/* $RPM_BUILD_ROOT%{_includedir}/%{name}/
-
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -87,7 +86,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog
 %attr(755,root,root) %{_bindir}/*
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.conf
+%dir %{_sysconfdir}
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*
 %{_mandir}/man1/*
 
 %files devel

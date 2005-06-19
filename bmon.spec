@@ -14,9 +14,10 @@ URL:		http://people.suug.ch/~tgr/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	libdbi-devel
+BuildRequires:	libnl-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	rrdtool-devel
-BuildRequires:	libdbi-devel
 Conflicts:	nstats
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

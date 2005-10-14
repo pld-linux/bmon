@@ -5,7 +5,7 @@ Summary:	Console interface bandwidth usage monitor
 Summary(pl):	Konsolowy monitor u¿ycia interfejsu sieciowego
 Name:		bmon
 Version:	2.2.0
-Release:	0.%{_pre}.1
+Release:	0.%{_pre}.2
 License:	Artistic
 Group:		Applications/Networking
 Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}-%{_pre}.tar.gz
@@ -18,7 +18,7 @@ BuildRequires:	libdbi-devel
 BuildRequires:	libnl-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	postgresql-devel
-BuildRequires:	rrdtool-devel
+BuildRequires:	rrdtool-devel >= 1.2.10
 Conflicts:	nstats
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

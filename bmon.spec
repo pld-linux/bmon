@@ -2,7 +2,7 @@
 %define	_pre	pre1
 %define	_sysconfdir	/etc/%{name}
 Summary:	Console interface bandwidth usage monitor
-Summary(pl):	Konsolowy monitor u縴cia interfejsu sieciowego
+Summary(pl.UTF-8):   Konsolowy monitor u偶ycia interfejsu sieciowego
 Name:		bmon
 Version:	2.2.0
 Release:	0.%{_pre}.3
@@ -33,28 +33,28 @@ It is able to generate and draw three types of diagrams:
 - The details diagram which contains all counters of an interface such
   as total bytes sent/received, errors, compressed packets, ...
 
-%description -l pl
+%description -l pl.UTF-8
 bmon jest monitorem ruchu na interfejsach sieciowych.
 
-Pozwala on na generowanie i rysowanie trzech typ體 diagram體:
-- Diagram og髄ny kt髍y wy秝ietla wszystkie interfejsy sieciowe i
-  informacje o aktualnym zu縴ciu przepustowo禼i
-- Diagram ASCII podobny do generowanego przez MRTG, pokazuj眂y
+Pozwala on na generowanie i rysowanie trzech typ贸w diagram贸w:
+- Diagram og贸lny kt贸ry wy艣wietla wszystkie interfejsy sieciowe i
+  informacje o aktualnym zu偶yciu przepustowo艣ci
+- Diagram ASCII podobny do generowanego przez MRTG, pokazuj膮cy
   informacje o przesyle danych w postaci wykresu paskowego
-- Diagram szczeg蟪owy kt髍y zawiera wszystkie liczniki danego
-  interfejsu, takie jak ca砶owita liczba bajt體 odebranych/wys砤nych,
-  b酬dy, skompresowane pakiety...
+- Diagram szczeg贸艂owy kt贸ry zawiera wszystkie liczniki danego
+  interfejsu, takie jak ca艂kowita liczba bajt贸w odebranych/wys艂anych,
+  b艂臋dy, skompresowane pakiety...
 
 %package devel
 Summary:	Header files for bmon
-Summary(pl):	Pliki nag丑wkowe dla bmon
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe dla bmon
 Group:		Development/Libraries
 
 %description devel
 Header files neccesary to develop bmon applications.
 
-%description devel -l pl
-Pliki nag丑wkowe niezb阣ne do tworzenia aplikacji korzystaj眂ych z
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe niezb臋dne do tworzenia aplikacji korzystaj膮cych z
 bmon.
 
 %prep

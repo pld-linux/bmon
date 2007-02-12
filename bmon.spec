@@ -2,7 +2,7 @@
 %define	_pre	pre1
 %define	_sysconfdir	/etc/%{name}
 Summary:	Console interface bandwidth usage monitor
-Summary(pl.UTF-8):   Konsolowy monitor użycia interfejsu sieciowego
+Summary(pl.UTF-8):	Konsolowy monitor użycia interfejsu sieciowego
 Name:		bmon
 Version:	2.2.0
 Release:	0.%{_pre}.3
@@ -47,7 +47,7 @@ Pozwala on na generowanie i rysowanie trzech typów diagramów:
 
 %package devel
 Summary:	Header files for bmon
-Summary(pl.UTF-8):   Pliki nagłówkowe dla bmon
+Summary(pl.UTF-8):	Pliki nagłówkowe dla bmon
 Group:		Development/Libraries
 
 %description devel

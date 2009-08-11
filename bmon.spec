@@ -5,17 +5,18 @@ Summary:	Console interface bandwidth usage monitor
 Summary(pl.UTF-8):	Konsolowy monitor użycia interfejsu sieciowego
 Name:		bmon
 Version:	2.2.0
-Release:	0.%{_pre}.4
+Release:	0.%{_pre}.5
 License:	Artistic
 Group:		Applications/Networking
 Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}-%{_pre}.tar.gz
 # Source0-md5:	f4ec66927751027f855886f3dc45c218
+Patch0:		%{name}-gcc4.patch
+Patch1:		%{name}-no-libnl.patch
 URL:		http://people.suug.ch/~tgr/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libdbi-devel
-BuildRequires:	libnl-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	rrdtool-devel >= 1.2.10
@@ -59,6 +60,8 @@ bmon.
 
 %prep
 %setup -q -n %{name}-%{version}-%{_pre}
+%patch0 -p1
+%patch1 -p1
 
 %build
 cp -f /usr/share/automake/config.sub .

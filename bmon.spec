@@ -15,7 +15,7 @@ Patch1:		%{name}-no-libnl.patch
 URL:		http://people.suug.ch/~tgr/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libdbi-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	postgresql-devel

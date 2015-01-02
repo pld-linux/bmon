@@ -1,25 +1,18 @@
-
-%define	_pre	pre1
-%define	_sysconfdir	/etc/%{name}
 Summary:	Console interface bandwidth usage monitor
 Summary(pl.UTF-8):	Konsolowy monitor użycia interfejsu sieciowego
 Name:		bmon
-Version:	2.2.0
-Release:	0.%{_pre}.5
+Version:	3.6
+Release:	1
 License:	Artistic
 Group:		Applications/Networking
-Source0:	http://people.suug.ch/~tgr/bmon/files/%{name}-%{version}-%{_pre}.tar.gz
-# Source0-md5:	f4ec66927751027f855886f3dc45c218
-Patch0:		%{name}-gcc4.patch
-Patch1:		%{name}-no-libnl.patch
-URL:		http://people.suug.ch/~tgr/bmon/
+Source0:	https://github.com/tgraf/bmon/archive/v%{version}.tar.gz?/%{name}-%{version}.tar.gz
+# Source0-md5:	a78c2c75b194840036703907efd39e89
+URL:		https://github.com/tgraf/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-tools
-BuildRequires:	libdbi-devel
+BuildRequires:	libconfuse-devel
+BuildRequires:	libnl-devel
 BuildRequires:	ncurses-devel
-BuildRequires:	postgresql-devel
-BuildRequires:	rrdtool-devel >= 1.2.10
 Conflicts:	nstats
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,41 +39,26 @@ Pozwala on na generowanie i rysowanie trzech typów diagramów:
   interfejsu, takie jak całkowita liczba bajtów odebranych/wysłanych,
   błędy, skompresowane pakiety...
 
-%package devel
-Summary:	Header files for bmon
-Summary(pl.UTF-8):	Pliki nagłówkowe dla bmon
-Group:		Development/Libraries
-
-%description devel
-Header files neccesary to develop bmon applications.
-
-%description devel -l pl.UTF-8
-Pliki nagłówkowe niezbędne do tworzenia aplikacji korzystających z
-bmon.
-
 %prep
-%setup -q -n %{name}-%{version}-%{_pre}
-%patch0 -p1
-%patch1 -p1
+%setup -q
 
 %build
-cp -f /usr/share/automake/config.sub .
-%{__gettextize}
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__automake}
 %{__autoheader}
 %configure
-%{__make}
+%{__make} V=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}
-install -d $RPM_BUILD_ROOT%{_includedir}/%{name}
-cp -r etc/* $RPM_BUILD_ROOT%{_sysconfdir}
-install include/%{name}/* $RPM_BUILD_ROOT%{_includedir}/%{name}/
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+cp -p examples/bmon.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -88,11 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/bmon.conf
 %attr(755,root,root) %{_bindir}/*
-%dir %{_sysconfdir}
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*
-%{_mandir}/man1/*
-
-%files devel
-%defattr(644,root,root,755)
-%{_includedir}/*
+%{_mandir}/man8/*

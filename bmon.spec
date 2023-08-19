@@ -11,8 +11,9 @@ URL:		https://github.com/tgraf/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libconfuse-devel
-BuildRequires:	libnl-devel
+BuildRequires:	libnl-devel >= 3.0
 BuildRequires:	ncurses-devel
+BuildRequires:	pkgconfig
 Conflicts:	nstats
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

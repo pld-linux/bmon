@@ -49,8 +49,9 @@ Pozwala on na generowanie i rysowanie trzech typów diagramów:
 %{__autoconf}
 %{__automake}
 %{__autoheader}
-%configure
-%{__make} V=1
+%configure \
+	--disable-silent-rules
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT

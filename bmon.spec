@@ -1,12 +1,12 @@
 Summary:	Console interface bandwidth usage monitor
 Summary(pl.UTF-8):	Konsolowy monitor użycia interfejsu sieciowego
 Name:		bmon
-Version:	3.6
+Version:	4.0
 Release:	1
 License:	Artistic
 Group:		Applications/Networking
 Source0:	https://github.com/tgraf/bmon/archive/v%{version}.tar.gz?/%{name}-%{version}.tar.gz
-# Source0-md5:	a78c2c75b194840036703907efd39e89
+# Source0-md5:	954afe2cedd8f972fc3903c10772a017
 URL:		https://github.com/tgraf/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -58,6 +58,8 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_docdir}/bmon/examples/bmon.conf
+
 cp -p examples/bmon.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 %clean
@@ -65,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog
+%doc NEWS examples/bmon.conf
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/bmon.conf
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man8/*

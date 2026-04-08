@@ -2,7 +2,7 @@ Summary:	Console interface bandwidth usage monitor
 Summary(pl.UTF-8):	Konsolowy monitor użycia interfejsu sieciowego
 Name:		bmon
 Version:	4.0
-Release:	1
+Release:	2
 License:	Artistic
 Group:		Applications/Networking
 Source0:	https://github.com/tgraf/bmon/archive/v%{version}.tar.gz?/%{name}-%{version}.tar.gz

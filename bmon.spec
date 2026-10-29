@@ -1,13 +1,13 @@
 Summary:	Console interface bandwidth usage monitor
 Summary(pl.UTF-8):	Konsolowy monitor użycia interfejsu sieciowego
 Name:		bmon
-Version:	4.0
-Release:	2
-License:	Artistic
+Version:	5.0
+Release:	1
+License:	MIT, BSD
 Group:		Applications/Networking
-Source0:	https://github.com/tgraf/bmon/archive/v%{version}.tar.gz?/%{name}-%{version}.tar.gz
-# Source0-md5:	954afe2cedd8f972fc3903c10772a017
-URL:		https://github.com/tgraf/bmon/
+Source0:	https://github.com/Jafaral/bmon/archive/v%{version}.tar.gz?/%{name}-%{version}.tar.gz
+# Source0-md5:	970ffe9c96da6a1fed221d7c76ad89ff
+URL:		https://github.com/Jafaral/bmon/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libconfuse-devel
@@ -44,7 +44,7 @@ Pozwala on na generowanie i rysowanie trzech typów diagramów:
 %setup -q
 
 %build
-%{__libtoolize}
+install -d build-aux
 %{__aclocal}
 %{__autoconf}
 %{__automake}
